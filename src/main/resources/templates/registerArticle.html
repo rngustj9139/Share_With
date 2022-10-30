@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta
+            name="description"
+            content="더도 말고 덜도 말고 딱 1인분만 필요한 1인 가구에게 쓸데없는 지출 비용을 절약할 수 있도록 동네 사람들과 아주 소소한 물건들을 같이 구매하여 소분할 수 있는 커뮤니티"
+    />
+    <meta
+            name="keywords"
+            content="소분,공동구매"
+    />
+    <meta
+            name="og:site_name"
+            content="#소분해요"
+    />
+    <meta
+            name="og:title"
+            content="소분글 쓰기"
+    />
+    <meta
+            name="og:description"
+            content="더도 말고 덜도 말고 딱 1인분만 필요한 1인 가구에게 쓸데없는 지출 비용을 절약할 수 있도록 동네 사람들과 아주 소소한 물건들을 같이 구매하여 소분할 수 있는 커뮤니티"
+    />
+    <meta
+            name="og:type"
+            content="website"
+    />
+    <meta
+            name="og:url"
+            content="https://share_with.com"
+    />
+    <meta
+            name="og:image"
+            content="/assets/thumbnail.png"
+    />
+    <meta
+            name="twitter:title"
+            content="#소분해요"
+    />
+
+    <title>#소분해요</title>
+
+    <script defer src="https://cdn.swygbro.com/public/widget/swyg-widget.js"></script>
+
+    <style>
+        .nickNameBold {
+            font-weight: bold;
+        }
+
+        .field-error {
+             border-color: #dc3545;
+             color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="head-menu">
+        <div>
+            <a>
+                <img src="/assets/title.png" class="title-img" th:onclick="|location.href='@{/}'|" style="cursor: pointer">
+            </a>
+        </div>
+<!--        <div class="search-item">-->
+        <form th:object="${articleSearch}" class="search-item">
+            <input type="text" th:field="*{itemType}" placeholder="소분하고 싶은 물건을 빠르게 찾아보세요">
+            <button>
+                <img src="/assets/search.png" style="margin-bottom: 1px;">
+            </button>
+<!--        </div>-->
+        </form>
+        <div class="user-auth" th:if="${loginMember}">
+            <button th:text="|${loginMember.nickName}님 반가워요|" class="nickNameBold"></button>
+            |
+            <form th:action="@{/logout}" method="post" style="display: inline;">
+                <button type="submit">로그아웃</button>
+            </form>
+        </div>
+
+    </div>
+    <div class="body-container">
+        <form th:action th:object="${articleRegisterRequestDto}" method="post" enctype="multipart/form-data">
+            <!-- 첨부한 이미지 파일의 개수가 3개가 넘을 경우 -->
+            <span th:if="${#fields.hasGlobalErrors()}" style="display: none">
+                <script th:inline="javascript">
+                    var message2 = "이미지 첨부는 총 3장까지 가능합니다.";
+                    alert(message2);
+                </script>
+            </span>
+
+            <!-- 이미지 파일을 업로드하지 않을 경우 -->
+            <span th:if="${#fields.hasErrors('imageFiles')}" style="display: none">
+                <script th:inline="javascript">
+                    var message3 = "jpg, png 형식의 이미지만 업로드 가능하며 최소 1개의 이미지 파일을 업로드 해야합니다.";
+                    alert(message3);
+                </script>
+            </span>
+
+            <div class="upload-picture" id="imageFilesUploadArea">
+                <div class="upload-picture-area">
+                    <img src="/assets/photo.png" class="upload-img">
+                </div>
+                <div class="upload-picture-text">
+                    이미지 첨부는 총 3장까지 가능합니다
+                </div>
+                <input type="file" id="imageFiles" th:field="*{imageFiles}" multiple="multiple" style="display: none">
+            </div>
+            <div id="preview" style="margin-top: 50px"></div>
+
+            <div class="subject">
+                <span class="validation">
+                    <p>제목</p>
+                    <div class="validation-right">
+                        <span class="field-error" th:errors="*{title}"></span>
+                    </div>
+                </span>
+                <input type="text" id="title" th:field="*{title}" placeholder="최대 50자까지 입력 가능합니다">
+            </div>
+            <div class="main-text" style="margin-bottom: 1px">
+                <span class="validation">
+                    <p>상품 타입</p>
+                    <div class="validation-right">
+                         <span class="field-error" th:errors="*{itemType}"></span>
+                    </div>
+                </span>
+                <input type="text" id="itemType" th:field="*{itemType}" placeholder="ex) 젤리, 비누, 세제">
+            </div>
+            <div class="region-personnel-area">
+                <div class="region">
+                    <span class="validation">
+                        <p>지역 및 동네</p>
+                        <div class="validation-right">
+                            <span class="field-error" th:errors="*{location}"></span>
+                        </div>
+                    </span>
+                    <input type="text" id="location" th:field="*{location}" placeholder="ex) 서울시 마포구 성산동">
+                </div>
+                <div class="personnel">
+                    <p>모집인원 설정</p>
+                    <div class="btn-group">
+                        <select th:field="*{limitPersonnel}" class="btn btn-secondary btn-sm dropdown-toggle toggle-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <ul class="dropdown-menu">
+                                <option value="1" text="1">1</option>
+                                <option value="2" text="2">2</option>
+                                <option value="3" text="3">3</option>
+                                <option value="4" text="4">4</option>
+                                <option value="5" text="5">5</option>
+                                <option value="6" text="6">6</option>
+                                <option value="7" text="7">7</option>
+                                <option value="8" text="8">8</option>
+                                <option value="9" text="9">9</option>
+                                <option value="10" text="10">10</option>
+                            </ul>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="main-text">
+                <span class="validation">
+                    <p>본문</p>
+                    <div class="validation-right">
+                          <span class="field-error" th:errors="*{content}"></span>
+                    </div>
+                </span>
+                <textarea class="main-text-area" id="content" th:field="*{content}" placeholder="모집 기간, 모임 지역, 오픈 채팅 URL 등을 작성해주세요"></textarea>
+            </div>
+            <div class="req-btn">
+                <button type="submit">글 등록</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+<script src="/js/imageUploadCheck.js"></script>
+<script>
+    let imageFilesUploadArea = document.getElementById("imageFilesUploadArea");
+    imageFilesUploadArea.addEventListener("click", function() {
+        document.getElementById('imageFiles').click();
+    });
+</script>
+</body>
+</html>

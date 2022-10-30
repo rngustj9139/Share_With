@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+  <nav th:fragment="navbar">
+    <a th:onclick="|location.href='@{/}'|">#소분해요</a>
+    <form action="/search/article" th:object="${orderSearch}">
+      <input type="text" th:fields="*{productName}" placeholder="소분하고 싶은 물건을 빠르게 찾아보세요">
+      <button type="submit">검색</button>
+    </form>
+    <a th:onclick="|location.href='@{/login}'|">로그인</a>
+    <a th:onclick="|location.href='@{/register/member}'|">회원가입</a>
+  </nav>
+
+</body>
+</html>

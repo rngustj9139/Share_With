@@ -1,0 +1,874 @@
+*{
+    margin: 0px;
+}
+body {
+    color: black;
+}
+.container {
+    font-family: 'S-CoreDream-5Medium';
+    text-align: center;
+}
+
+/* 회원가입, 로그인창 공통 */
+.title {
+    margin: 35px 0px 25px 0px;
+}
+.title-link {
+    text-decoration: none;
+}
+.title p {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 90px;
+    color: #27b994;
+}
+.validation {
+    display: flex;
+    align-items: end;
+}
+.validation-right {
+    margin-left: auto;
+    font-size: 14px;
+}
+.name, .nickname, .email, .pswd, .pswd-repeat{
+    margin: auto;
+    width: 60%;
+    text-align: center;
+}
+.container input {
+    padding-left: 10px;
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 2px solid gray;
+    height: 40px;
+}
+.container input::placeholder {
+    font-size: 13px;
+    color: rgba(0,0,0,0.4);
+    font-family: 'S-CoreDream-4Regular';
+}
+.name p, .nickname p, .email p, .pswd p, .pswd-repeat p {
+    text-align: start;
+    margin: 5px 0px;
+    font-size: 20px;
+}
+.name b, .nickname b, .email b, .pswd b, .pswd-repeat b {
+    color: red;
+}
+.join-btn {
+    width: 60%;
+    margin: 40px auto;
+}
+.join-btn button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    background-color: #27b994;
+    color: white;
+    font-size: 22px;
+    transition: 0.2s;
+}
+.join-btn button:hover {
+    background-color: #1a8167;
+}
+.line {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: rgba(0,0,0,0.5);
+    font-size: 20px;
+    margin: 8px 0px 15px 0px;
+}
+.line::before {
+    content: "";
+    flex-grow: 1;
+    margin: 0px 15px;
+    background-color: rgba(0,0,0,0.5);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+}
+.line::after {
+    content: "";
+    flex-grow: 1;
+    margin: 0px 15px;
+    background-color: rgba(0,0,0,0.5);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+}
+.other-join{
+    display: flex;
+    justify-content: space-around;
+    margin: auto 15%;
+    font-size: 15px;
+    color: rgb(51, 51, 51);
+}
+.register-img{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+
+/* 회원가입창 */
+.already-join{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    color: rgb(51, 51, 51);
+}
+.already-join p {
+    margin-top: 1px;
+}
+.already-join button {
+    border: none;
+    border-radius: 15px;
+    height: 25px;
+    font-size: 13px;
+    background-color: white;
+    color: #1a8167;
+}
+
+
+/* 로그인창 */
+.find-pswd {
+    border: none;
+    border-radius: 15px;
+    height: 25px;
+    font-size: 15px;
+    background-color: white;
+    color: #1a8167;
+    margin: 10px 0px 60px 0px;
+}
+
+/* 메인 화면 */
+.head-menu{
+    display: flex;
+    margin: 40px 0px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 40px;
+}
+.search-item{
+    margin: 5px 50px;
+    display: flex;
+    background-color: rgb(223, 223, 223);
+    border-radius: 15px;
+    height: 35px;
+    padding-right: 10px;
+}
+.search-item button {
+    background-color: rgba( 255, 255, 255, 0);
+    border: none;
+    margin-bottom: 10px;
+}
+.search-item input {
+    padding-left: 15px;
+    width: 300px;
+    margin-bottom: 30px;
+    border: none;
+    height: 35px;
+    background-color: rgba( 255, 255, 255, 0);
+}
+.search-item input:focus {
+    outline: none;
+}
+.search-item input:focus::placeholder {
+    color: rgba( 255, 255, 255, 0);
+}
+.search-item button img {
+    width: 17px;
+    height: 17px;
+    margin-top: 10px;
+}
+.user-auth{
+    line-height: 45px;
+    margin-left: auto;
+    color: rgb(80, 80, 80);
+}
+.user-auth button {
+    border: none;
+    background-color: white;
+    color: rgb(80, 80, 80);
+}
+.user-auth-img {
+    width: 30px;
+    height: 30px;
+}
+.register-btn {
+    text-align: end;
+    margin: 30px 0px;
+}
+.register-btn button {
+    width: 170px;
+    height: 35px;
+    border: none;
+    border-radius: 15px;
+    background-color: #27b994;
+    color: white;
+    font-size: 17px;
+    transition: 0.2s;
+}
+.register-btn button:hover {
+    background-color: #1a8167;
+}
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.item-card{
+    width: 200px;
+    height: 270px;
+    margin: 20px 20px;
+    font-weight: 700;
+    border: none;
+    border-radius: 15px;
+    transition: 0.2s;
+}
+.item-card:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+.item-img{
+    margin: 15px 0px 20px 0px;
+    width: 180px;
+    height: 160px;
+    background-color: rgb(180, 180, 180);
+    border: none;
+    border-radius: 15px;
+}
+.item-content{
+    height: 50px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.applicant-area{
+    height: 20px;
+    color: rgb(41, 41, 41);
+    display: flex;
+    font-size: 12px;
+    justify-content: center;
+    margin: 5px 0px;
+    padding-bottom: 5px;
+}
+.applicant-img {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 3px;
+}
+.overlay{
+    line-height: 160px;
+    position: absolute;
+    margin: 15px 10px 20px 10px;
+    width: 180px;
+    height: 160px;
+    border: none;
+    border-radius: 15px;
+    background-color: rgba( 255, 255, 255, 0.7);
+}
+.more-item{
+    margin: 50px 0px;
+}
+.more-item button {
+    border: 3px solid gray;
+    background-color: rgba( 255, 255, 255, 0);
+    border-radius: 100%;
+    transition: 0.1s;
+}
+.more-item button:hover {
+    border: 3px solid rgb(51, 51, 51);
+}
+
+
+/* 디테일 페이지 */
+.upload-item {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+.arrow-area button {
+    margin: 0px 100px;
+    line-height: 350px;
+    border: none;
+    background-color: white;
+    cursor: default;
+}
+.arrow-area button img:hover {
+    background-color: rgb(235, 235, 235);
+}
+.arrow-area button img {
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.item-picture-area{
+    overflow-x: hidden;
+    width: 400px;
+    height: 350px;
+    box-shadow: 5px 5px 5px gray;
+}
+.item-pictures{
+    display: flex;
+    transition: 0.2s ease-out;
+}
+.item-pictures img {
+    width: 400px;
+    height: 350px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.slide-toggle{
+    display: flex;
+    justify-content: center;
+}
+.slide-toggle button {
+    margin: 20px 3px;
+    width: 25px;
+    height: 10px;
+    border: none;
+    background-color: lightgray;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+.item-title{
+    margin-top: 30px;
+    font-size: 30px;
+    font-weight: 700;
+}
+.user-info{
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    color: rgb(70, 70, 70);
+}
+.detail-applicant-img{
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 30px;
+}
+.detail-applicant-img:hover {
+    cursor: pointer;
+}
+.item-text {
+    width: 60%;
+    margin: 30px auto;
+    text-align: start;
+}
+.req-btn {
+    margin-bottom: 30px;
+}
+.req-btn button{
+    margin-top: 10px;
+    width: 170px;
+    height: 35px;
+    border: none;
+    border-radius: 15px;
+    background-color: #27b994;
+    color: white;
+    font-size: 17px;
+    transition: 0.2s;
+}
+.req-btn button:hover {
+    background-color: #1a8167;
+}
+
+/* 디테일 페이지 (작성자) */
+.applicant-list {
+    display: none;
+    position: absolute;
+    width: 200px;
+    height: auto;
+    padding: 10px 20px;
+    background-color: rgb(221, 221, 221);
+    color: black;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: 700;
+    box-shadow: 3px 3px 10px #3b3b3b;
+}
+.applicant-member-list{
+    list-style: none;
+    padding-left: 0px;
+    margin: 20px 0px 10px 0px;
+    font-weight: 400;
+}
+.applicant-member-list li {
+    font-size: 16px;
+    text-align: start;
+    margin-bottom: 10px;
+    color: rgb(22, 22, 22);
+}
+.applicant-member{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+/* 업로드 페이지 */
+.body-container {
+    text-align: center;
+}
+.upload-picture {
+    margin: auto;
+    border: 2px solid gray;
+    border-radius: 10px;
+    width: 350px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: rgb(78, 78, 78);
+}
+.upload-img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.subject p, .region p, .personnel p, .main-text p {
+    text-align: start;
+}
+.subject{
+    width: 600px;
+    margin: 30px auto 0px auto;
+}
+.region-personnel-area {
+    display: flex;
+    justify-content: center;
+}
+.region {
+    width: 400px;
+    /* margin: 10px auto 0px auto */
+}
+.personnel {
+    margin-left: 105px;
+}
+.personnel .toggle-btn {
+    width: 80px;
+    height: 40px;
+    text-align: start;
+    padding-left: 15px;
+}
+.toggle-btn {
+    background-color: white;
+    border: 2px solid gray;
+    border-radius: 15px;
+    color: gray;
+}
+.dropdown-toggle::after {
+    margin-left: 30px;
+}
+.dropdown-menu li{
+    padding: 2px 0px 2px 5px;
+    border-bottom: 1px solid rgb(201, 201, 201);
+    transition: 0.2s;
+}
+.dropdown-menu li:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+.main-text {
+    width: 600px;
+    margin: auto auto 30px auto;
+}
+.main-text-area{
+    width: 600px;
+    height: 300px;
+    padding: 10px;
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+.main-text-area::placeholder {
+    font-family: 'S-CoreDream-3Light';
+    font-weight: 300;
+    font-size: 15px;
+    color: rgb(150, 150, 150);
+}
+
+
+/* 반응형  */
+
+@media (max-width: 991px) {
+    /* 메인 화면 */
+    .search-item{
+        margin: 5px 20px;
+    }
+    .search-item button {
+        width: 15px;
+        height: 15px;
+        padding: 0px 10px 0px 0px;
+    }
+    .search-item input {
+        padding-left: 10px;
+        width: 230px;
+    }
+    .search-item input::placeholder {
+        font-size: 12px;
+    }
+    .user-auth{
+        font-size: 12px;
+    }
+    .user-auth-img {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* 디테일 페이지 */
+    .arrow-area button {
+        margin: 0px 50px;
+        line-height: 300px;
+    }
+    .item-picture-area{
+        width: 350px;
+        height: 300px;
+    }
+    .item-pictures img {
+        width: 350px;
+        height: 300px;
+    }
+    .item-title{
+        font-size: 27px;
+    }
+    .user-info{
+        font-size: 14px;
+    }
+    .detail-applicant-img{
+        width: 23px;
+        height: 23px;
+    }
+    .item-text {
+        font-size: 15px;
+    }
+    .req-btn button{
+        width: 160px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    /* 글작성페이지 */
+    .upload-picture {
+        width: 350px;
+        height: 250px;
+    }
+    .upload-img {
+        width: 60px;
+        height: 60px;
+    }
+    .subject{
+        width: 500px;
+    }
+    .region {
+        width: 300px;
+    }
+    .personnel {
+        margin-left: 100px;
+    }
+    .personnel .toggle-btn {
+        width: 70px;
+        padding-left: 8px;
+    }
+    .dropdown-menu li{
+        padding: 1px 0px 1px 5px;
+    }
+    .main-text {
+        width: 500px;
+    }
+    .main-text-area{
+        width: 500px;
+        height: 250px;
+    }
+}
+
+
+@media (max-width: 767px) {
+    /* 회원가입, 로그인창 공통 */
+    .title p {
+        font-size: 75px;
+    }
+    .name p, .nickname p, .email p, .pswd p, .pswd-repeat p {
+        font-size: 15px;
+    }
+    .container input::placeholder {
+        font-size: 11px;
+    }
+    .line {
+        font-size: 17px;
+    }
+    .other-join{
+        font-size: 14px;
+    }
+    .register-img{
+        width: 25px;
+        height: 25px;
+        margin-bottom: 5px;
+    }
+
+    /* 메인 화면 */
+    .head-menu {
+        padding-bottom: 60px;
+    }
+    .user-auth{
+        position: absolute;
+        top: 90px;
+        right: 60px;
+    }
+
+    /* 디테일 페이지 */
+    .arrow-area button {
+        margin: 0px 30px;
+        line-height: 200px;
+    }
+    .item-picture-area{
+        width: 250px;
+        height: 200px;
+    }
+    .item-pictures img {
+        width: 250px;
+        height: 200px;
+    }
+    .item-title{
+        font-size: 25px;
+    }
+    .user-info{
+        font-size: 14px;
+    }
+    .detail-applicant-img{
+        width: 20px;
+        height: 20px;
+    }
+    .item-text {
+        font-size: 14px;
+    }
+
+    /* 디테일 페이지 (작성자) */
+    .applicant-list {
+        width: 170px;
+        height: auto;
+        font-size: 14px;
+    }
+    .applicant-member-list li {
+        font-size: 14px;
+    }
+    .applicant-member{
+        width: 18px;
+        height: 18px;
+    }
+
+    /* 글작성페이지 */
+    .upload-picture {
+        width: 330px;
+        height: 230px;
+    }
+    .upload-img {
+        width: 55px;
+        height: 55px;
+    }
+    .subject{
+        width: 400px;
+    }
+    .region {
+        width: 200px;
+    }
+    .main-text {
+        width: 400px;
+    }
+    .main-text-area{
+        width: 400px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 530px) {
+    /* 회원가입, 로그인창 공통 */
+    .title p {
+        font-size: 60px;
+    }
+    .name, .nickname, .email, .pswd, .pswd-repeat{
+        width: 75%;
+    }
+    .name p, .nickname p, .email p, .pswd p, .pswd-repeat p {
+        font-size: 14px;
+    }
+    .container input {
+        margin-bottom: 25px;
+        height: 35px;
+    }
+    .container input::placeholder {
+        font-size: 10px;
+    }
+    .line {
+        font-size: 14px;
+    }
+    .other-join{
+        font-size: 12px;
+    }
+    .register-img{
+        width: 23px;
+        height: 23px;
+    }
+
+    /* 메인 화면*/
+    .head-menu {
+        display: block;
+        padding-bottom: 60px;
+    }
+    .title-img {
+        width: 200px;
+        height: 40px;
+        margin-bottom: 20px;
+    }
+    .search-item{
+        margin: 5px 40px;
+        height: 30px;
+    }
+    .search-item input {
+        width: 270px;
+        height: 26px;
+    }
+    .search-item button img {
+        margin-top: 4px;
+    }
+    .user-auth{
+        position: absolute;
+        top: 150px;
+        right: 35px;
+    }
+    .register-btn button {
+        width: 140px;
+        height: 30px;
+        font-size: 15px;
+        margin-right: 10px;
+    }
+    .item-card{
+        width: 250px;
+    }
+    .item-img{
+        width: 200px;
+    }
+    .overlay{
+        margin: 15px 25px 20px 25px;
+        width: 200px;
+    }
+
+    /* 디테일 페이지 */
+    .user-auth-img {
+        width: 25px;
+        height: 25px;
+    }
+    .arrow-area button {
+        margin: 0px 15px;
+    }
+    .item-picture-area{
+        width: 200px;
+    }
+    .item-pictures img {
+        width: 200px;
+    }
+    .item-title{
+        font-size: 23px;
+    }
+    .user-info{
+        font-size: 12px;
+    }
+    .detail-applicant-img{
+        width: 18px;
+        height: 18px;
+    }
+    .item-text {
+        font-size: 13px;
+        width: 75%;
+    }
+
+    /* 디테일 페이지 (작성자) */
+    .applicant-list {
+        width: 170px;
+        height: auto;
+        font-size: 14px;
+    }
+    .applicant-member-list li {
+        font-size: 14px;
+    }
+    .applicant-member{
+        width: 18px;
+        height: 18px;
+    }
+
+    /* 글작성페이지 */
+    .upload-picture {
+        width: 250px;
+        height: 150px;
+    }
+    .upload-img {
+        width: 45px;
+        height: 45px;
+    }
+    .upload-picture-text {
+        font-size: 13px;
+    }
+    .subject p, .region p, .personnel p, .main-text p {
+        font-size: 14px;
+    }
+    .subject input, .region input {
+        font-size: 12px;
+    }
+    .subject{
+        width: 250px;
+    }
+    .region {
+        width: 150px;
+    }
+    .personnel {
+        margin-left: 20px;
+    }
+    .personnel .toggle-btn {
+        width: 50px;
+        height: 35px;
+        padding-left: 5px;
+    }
+    .dropdown-toggle::after {
+        margin-left: 15px;
+    }
+    .main-text {
+        width: 250px;
+    }
+    .main-text-area{
+        width: 250px;
+        height: 190px;
+        font-size: 12px;
+    }
+    .main-text-area::placeholder {
+        font-size: 12px;
+    }
+}
+
+/* 폰트 */
+@font-face {
+    font-family: 'S-CoreDream-9Black';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-5Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-4Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

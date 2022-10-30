@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta
+            name="description"
+            content="더도 말고 덜도 말고 딱 1인분만 필요한 1인 가구에게 쓸데없는 지출 비용을 절약할 수 있도록 동네 사람들과 아주 소소한 물건들을 같이 구매하여 소분할 수 있는 커뮤니티"
+    />
+    <meta
+            name="keywords"
+            content="소분,공동구매"
+    />
+    <meta
+            name="og:site_name"
+            content="#소분해요"
+    />
+    <meta
+            name="og:title"
+            content="소분글 상세보기"
+    />
+    <meta
+            name="og:description"
+            content="더도 말고 덜도 말고 딱 1인분만 필요한 1인 가구에게 쓸데없는 지출 비용을 절약할 수 있도록 동네 사람들과 아주 소소한 물건들을 같이 구매하여 소분할 수 있는 커뮤니티"
+    />
+    <meta
+            name="og:type"
+            content="website"
+    />
+    <meta
+            name="og:url"
+            content="https://share_with.com"
+    />
+    <meta
+            name="og:image"
+            content="/assets/thumbnail.png"
+    />
+    <meta
+            name="twitter:title"
+            content="#소분해요"
+    />
+
+    <title>#소분해요</title>
+
+    <script defer src="https://cdn.swygbro.com/public/widget/swyg-widget.js"></script>
+
+    <style>
+        .nickNameBold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<!-- 소분 글 지원 완료시 표시됨 -->
+<div th:if="${param.application}">
+    <script th:inline="javascript">
+        var message1= "지원 완료!";
+        alert(message1);
+    </script>
+</div>
+
+<!-- 소분 글 지원 버튼 클릭했으나 이미 지원한 상태인 경우 표시됨 -->
+<div th:if="${param.failedApplication}">
+    <script th:inline="javascript">
+        var message2 = "이미 지원하신 소분 글입니다.";
+        alert(message2);
+    </script>
+</div>
+
+<!-- 소분 글 지원 버튼 클릭했으나 모집 완료인 경우 표시됨 -->
+<div th:if="${param.isMeetTheLimitPersonnel}">
+    <script th:inline="javascript">
+        var message3 = "모집이 완료된 글입니다.";
+        alert(message3);
+    </script>
+</div>
+
+<div class="container">
+    <div class="head-menu">
+        <div>
+            <a>
+                <img src="/assets/title.png" class="title-img" th:onclick="|location.href='@{/}'|"  style="cursor: pointer">
+            </a>
+        </div>
+<!--        <div class="search-item">-->
+        <form th:object="${articleSearch}" class="search-item">
+            <input type="text" th:field="*{itemType}" placeholder="소분하고 싶은 물건을 빠르게 찾아보세요">
+            <button>
+                <img src="/assets/search.png">
+            </button>
+        </form>
+<!--        </div>-->
+        <div class="user-auth" th:if="${loginMember}">
+            <button th:text="|${loginMember.nickName}님 반가워요|" class="nickNameBold"></button>
+            |
+            <form th:action="@{/logout}" method="post" style="display: inline;">
+                <button type="submit">로그아웃</button>
+            </form>
+        </div>
+    </div>
+    <div class="body-container">
+        <!-- 소분 글 저장 완료시 표시됨 -->
+        <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
+
+        <div class="upload-item">
+            <div class="arrow-area">
+                <button>
+                    <img src="/assets/leftarrow.png"
+                         style="width: 40px; height: 40px;"
+                         id="leftArrow">
+                </button>
+            </div>
+            <div class="item-picture-area">
+                <div class="item-pictures">
+                    <div class="picture" th:each="imageFile : ${article.imageFiles}">
+                        <img th:src="|/article/images/${imageFile.getStoreFileName()}|"/>
+                    </div>
+                </div>
+            </div>
+            <div class="arrow-area">
+                <button>
+                    <img src="/assets/rightarrow.png"
+                         style="width: 40px; height: 40px;"
+                         id="rightArrow">
+                </button>
+            </div>
+        </div>
+        <div class="slide-toggle" th:with="size = ${#lists.size(article.imageFiles)}">
+            <button class="btn1" th:if="${size} == 1"></button>
+            <button class="btn2" th:if="${size} == 1" style="display: none"></button>
+            <button class="btn3" th:if="${size} == 1" style="display: none"></button>
+        </div>
+        <div class="slide-toggle" th:with="size = ${#lists.size(article.imageFiles)}">
+            <button class="btn1" th:if="${size} == 2"></button>
+            <button class="btn2" th:if="${size} == 2"></button>
+            <button class="btn3" th:if="${size} == 2" style="display: none"></button>
+        </div>
+        <div class="slide-toggle" th:with="size = ${#lists.size(article.imageFiles)}">
+            <button class="btn1" th:if="${size} == 3"></button>
+            <button class="btn2" th:if="${size} == 3"></button>
+            <button class="btn3" th:if="${size} == 3"></button>
+        </div>
+        <div class="item-title">
+            <p th:text="${article.title}">
+                빨래비누 3개입 소분해요
+            </p>
+        </div>
+        <div class="user-info">
+            <span th:text="${member.nickName}">
+                gy0109
+            </span>
+            &nbsp;|&nbsp;
+            <span th:text="${article.location}">
+                서울시 마포구 성산동
+            </span>
+            &nbsp;|&nbsp;
+            <div>
+                <span th:text="${article.applicationPersonnel} + '/'+ ${article.limitPersonnel}">1/3</span>
+                <img src="/assets/applicant.png" class="detail-applicant-img">
+            </div>
+
+            <!-- 마우스 호버 시 나오는 div -->
+            <div class="applicant-list" th:if="${member.id} == ${loginMember.id}">
+                신청자
+                <ul class="applicant-member-list" th:each="member : ${applicants}">
+                    <li><img src="/assets/profile.png" class="applicant-member" th:text="${member.nickName}"></li>
+                <!--<li><img src="/assets/profile.png" class="applicant-member">여섯글자임다</li>-->
+                </ul>
+            </div>
+        </div>
+
+        <div class="item-text" th:text="${article.content}">
+            빨래 비누 3개입 소분합니다. 빨래 비누 3개입 소분합니다. 빨래 비누 3개입 소분합니다. 빨래 비누 3개입 소분합니다. 빨래 비누 3개입 소분합니다. 빨래 비누 3개입 소분합니다.빨래 비누 3개입 소분합니다. 빨래 비누 3개입 소분합니다. 빨래 비누 3개입 소분합니다. 빨래 비누 3개입 소분합니다.
+        </div>
+
+        <div th:if="${member.id} == ${loginMember.id}" class="req-btn">
+            <button type="button" th:onclick="|location.href='@{/articles/{articleId}/edit(articleId=${article.id})}'|">작성글 편집</button>
+        </div>
+
+        <div class="req-btn" th:unless="${member.id} == ${loginMember.id}">
+            <form th:action="@{/articles/{articleId}/register(articleId=${article.id})}" method="post">
+                <button type="submit">소분 신청하기</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/js/oneArticleApplicant.js"></script>
+<script src="/js/oneArticleWriter.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".detail-applicant-img").mouseover(function () {
+            $(".applicant-list").css("display", "block");
+        });
+        $(".detail-applicant-img").mouseout(function () {
+            $(".applicant-list").css("display", "none");
+        });
+    });
+</script>
+<script>
+    const height = document.querySelector(".item-text")
+    console.log("뜨나요",height.clientHeight)
+
+    if(height.clientHeight < 25) {
+        height.style.textAlign = 'center'
+    } else {
+        height.style.textAlign = 'start'
+    }
+</script>
+</body>
+</html>
